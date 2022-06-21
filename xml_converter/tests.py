@@ -11,13 +11,19 @@ class XMLConversionTestCase(TestCase):
         self.client = Client()
 
     def test_connected_convert_empty_document(self):
+        """
+        Test that an empty document is converted to an empty dictionary with root tag as key.
+        """
         with (TEST_DIR / Path("empty.xml")).open() as fp:
+            # GIVEN/WHEN
             response = self.client.post(
                 "/connected/",
                 {
                     "file": fp,
                 },
             )
+
+            # THEN
             self.assertEqual(response.status_code, 200)
             self.assertEqual(
                 response.json(),
@@ -27,13 +33,19 @@ class XMLConversionTestCase(TestCase):
             )
 
     def test_api_convert_empty_document(self):
+        """
+        Test that an empty document is converted to an empty dictionary with root tag as key.
+        """
         with (TEST_DIR / Path("empty.xml")).open() as fp:
+            # GIVEN/WHEN
             response = self.client.post(
                 "/api/converter/convert/",
                 {
                     "file": fp,
                 },
             )
+
+            # THEN
             self.assertEqual(response.status_code, 200)
             self.assertEqual(
                 response.json(),
@@ -43,13 +55,19 @@ class XMLConversionTestCase(TestCase):
             )
 
     def test_connected_convert_addresses(self):
+        """
+        Test that xml file with addresses is converted to a dictionary with root tag as key.
+        """
         with (TEST_DIR / Path("addresses.xml")).open() as fp:
+            # GIVE/WHEN
             response = self.client.post(
                 "/connected/",
                 {
                     "file": fp,
                 },
             )
+
+            # THEN
             self.assertEqual(response.status_code, 200)
             self.assertEqual(
                 response.json(),
@@ -77,13 +95,19 @@ class XMLConversionTestCase(TestCase):
             )
 
     def test_api_convert_addresses(self):
+        """
+        Test that xml file with addresses is converted to a dictionary with root tag as key.
+        """
         with (TEST_DIR / Path("addresses.xml")).open() as fp:
+            # GIVEN/WHEN
             response = self.client.post(
                 "/api/converter/convert/",
                 {
                     "file": fp,
                 },
             )
+
+            # THEN
             self.assertEqual(response.status_code, 200)
             self.assertEqual(
                 response.json(),
@@ -111,13 +135,19 @@ class XMLConversionTestCase(TestCase):
             )
 
     def test_connected_convert_example_1_from_readme(self):
+        """
+        Test that example from readme is converted to a dictionary with root tag as key.
+        """
         with (TEST_DIR / Path("example1_from_readme.xml")).open() as fp:
+            # GIVEN/WHEN
             response = self.client.post(
                 "/connected/",
                 {
                     "file": fp,
                 },
             )
+
+            # THEN
             self.assertEqual(response.status_code, 200)
             self.assertEqual(
                 response.json(),
@@ -125,13 +155,19 @@ class XMLConversionTestCase(TestCase):
             )
 
     def test_api_convert_example_1_from_readme(self):
+        """
+        Test that example from readme is converted to a dictionary with root tag as key.
+        """
         with (TEST_DIR / Path("example1_from_readme.xml")).open() as fp:
+            # GIVEN/WHEN
             response = self.client.post(
                 "/api/converter/convert/",
                 {
                     "file": fp,
                 },
             )
+
+            # THEN
             self.assertEqual(response.status_code, 200)
             self.assertEqual(
                 response.json(),
@@ -139,13 +175,19 @@ class XMLConversionTestCase(TestCase):
             )
 
     def test_connected_convert_example_2_from_readme(self):
+        """
+        Test that example from readme is converted to a dictionary with root tag as key.
+        """
         with (TEST_DIR / Path("example2_from_readme.xml")).open() as fp:
+            # GIVEN/WHEN
             response = self.client.post(
                 "/connected/",
                 {
                     "file": fp,
                 },
             )
+
+            # THEN
             self.assertEqual(response.status_code, 200)
             self.assertEqual(
                 response.json(),
@@ -154,12 +196,15 @@ class XMLConversionTestCase(TestCase):
 
     def test_api_convert_example_2_from_readme(self):
         with (TEST_DIR / Path("example2_from_readme.xml")).open() as fp:
+            # GIVEN/WHEN
             response = self.client.post(
                 "/api/converter/convert/",
                 {
                     "file": fp,
                 },
             )
+
+            # THEN
             self.assertEqual(response.status_code, 200)
             self.assertEqual(
                 response.json(),
